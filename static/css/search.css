@@ -1,0 +1,16 @@
+.search-position{
+    position: relative;
+    top: 350px;
+}
+
+.container .btn-color{
+    background-color: orange;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(0, 0, 0);
+}
+
+.container .btn-color:hover{
+    background-color: rgb(156, 94, 0);
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 255, 255);
+}

@@ -1,0 +1,64 @@
+
+@import url(https://fonts.googleapis.com/css2?family=Sacramento&display=swap);
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.main {
+    min-height: 450px;
+}
+
+h1{
+    color: #66bfbf;
+    font-family: "Montserrat", sans-serif;
+    font-weight:normal;
+    padding-bottom: 10px;
+    position: relative;
+    top:240px;
+}
+
+h2{
+    position: relative;
+    top:240px;
+}
+
+.Capy {
+    color: #996130;
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    font-family: "Sacramento";
+    font-weight: bold;
+}
+
+.Weather{
+    color: #66bfbf;
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    font-family: "Sacramento";
+    font-weight: bold;
+}
+
+.searching-buttons{
+    position: relative;
+    top: 140px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.searching-buttons .btn-city{
+    background-color: #e6920b;
+    position: relative;
+    right: 130px;
+}
+
+.searching-buttons .btn-ticket{
+    background-color: #e6920b;
+    position: relative;
+    left: 130px;
+    bottom: 56px;
+}
+
