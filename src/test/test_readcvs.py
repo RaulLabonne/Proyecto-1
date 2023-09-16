@@ -20,15 +20,11 @@ class ReadCVS(unittest.TestCase):
         ticket = "kw9f0kwvZJmsukQy"
         weathers_json = read(ticket)
 
-        test_weather_one = json.loads(weathers_json[0])
         weather_one = search("TLC")
-        dict_one = json.loads(weather_one)
-        self.assertDictEqual(test_weather_one, dict_one)
+        self.assertEqual(weathers_json[0], weather_one)
 
-        test_weather_two = json.loads(weathers_json[1])
         weather_two = search("MTY")
-        dict_two = json.loads(weather_two)
-        self.assertDictEqual(test_weather_two, dict_two)
+        self.assertEqual(weathers_json[1], weather_two)
 
         cache["TLC"] = weather_one
         cache["MTY"] = weather_two
