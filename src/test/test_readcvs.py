@@ -22,13 +22,12 @@ class ReadCVS(unittest.TestCase):
 
         weather_one = search("TLC")
         self.assertEqual(weathers_json[0], weather_one)
-
+        
         weather_two = search("MTY")
         self.assertEqual(weathers_json[1], weather_two)
-
         cache["TLC"] = weather_one
         cache["MTY"] = weather_two
-
+        
         self.assertDictEqual(getCache(self), cache)
 
     if __name__ == '__main__':
