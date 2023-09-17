@@ -19,17 +19,23 @@ h1{
     font-weight:normal;
     padding-bottom: 10px;
     position: relative;
-    top:240px;
+    top:100px;
 }
 
-h2{
+.main h2{
+    font-size: 45px;
     position: relative;
-    top:240px;
+    top:100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.search .search-position{
+    position: relative;
 }
 
 .Capy {
     color: #996130;
-    font-size: 90px;
+    font-size: 140px;
     margin: 50px auto 0 auto;
     font-family: "Sacramento";
     font-weight: bold;
@@ -37,15 +43,21 @@ h2{
 
 .Weather{
     color: #66bfbf;
-    font-size: 90px;
+    font-size: 140px;
     margin: 50px auto 0 auto;
     font-family: "Sacramento";
     font-weight: bold;
 }
 
+/* NavBar */
+.search .nav-bar-size{
+    height: 60px;
+}
+
+/* Buttons */
 .searching-buttons{
     position: relative;
-    top: 140px;
+    top: 30px;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -61,4 +73,124 @@ h2{
     left: 130px;
     bottom: 56px;
 }
+
+/* Images */
+
+.image-background .sun{
+    position: absolute;
+    left:0px;
+    animation: rotation 6s infinite linear;
+}
+
+.image-background .cloud1{
+    position: absolute;
+    top:70px;
+    left:900px;
+    animation-duration: 27s;
+    animation-name: slide;
+    animation-iteration-count: infinite;
+}
+
+.image-background .cloud2{
+    position: absolute;
+    top:200px;
+    left:250px;
+    animation-duration: 22s;
+    animation-name: slide;
+    animation-iteration-count: infinite;
+}
+
+.image-background .cloud3{
+    position: absolute;
+    top:40px;
+    left:0px;
+    animation-duration: 15s;
+    animation-name: slide;
+    animation-iteration-count: infinite;
+}
+
+.image-background .cloud4{
+    position: absolute;
+    top:0px;
+    left:60px;
+    animation-duration: 15s;
+    animation-name: slide;
+    animation-iteration-count: infinite;
+}
+
+.image-background .cloud5{
+    position: absolute;
+    top:7px;
+    left:5px;
+    animation-duration: 26s;
+    animation-name: slide;
+    animation-iteration-count: infinite;
+}
+
+.image-background .cloud6{
+    position: absolute;
+    top:100px;
+    left: 55px;
+    animation-duration: 26s;
+    animation-name: slideleft;
+    animation-iteration-count: infinite;
+}
+
+.image-background .grass{
+    position: absolute;
+    bottom: 0px;
+}
+
+.image-background .capybara{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.image-background .capybara2{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.image-background .capybara3{
+    position: absolute;
+    bottom: 0px;
+}
+
+
+/* Animation */
+@keyframes slide {
+    from {
+      margin-left: 0%;
+      width: 100%;
+    }
+  
+    to {
+      margin-left: 100%;
+      width: 300%;
+    }
+}
+
+@keyframes slideleft {
+    from {
+      margin-left: 0%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: -100%;
+      width: 0%;
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
 
