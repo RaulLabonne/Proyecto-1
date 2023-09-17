@@ -10,18 +10,61 @@
 </head>
 <body style="background-color: #dbf2f9;">
   <!-- Welcome page and what are you going to search -->
+<!-- Background image -->
     <section class="image-background">
+      <div class="sun">
+        <img width="320px" src="../static/images/744-removebg-preview.png">
+      </div>
+      <div class="cloud1">
+        <img width="250px" src="../static/images/cloud.png"\>
+      </div>
+      <div class="cloud2">
+        <img width="270px" src="../static/images/cloud.png"\>
+      </div>
+      <div class="cloud3">
+        <img width="300px" src="../static/images/cloud.png"\>
+      </div>
+      <div class="cloud4">
+        <img width="250px" src="../static/images/cloud.png"\>
+      </div>
+      <div class="cloud5">
+        <img width="310px" src="../static/images/cloud.png"\>
+      </div>
+      <div class="cloud6">
+        <img width="310px" src="../static/images/cloud.png"\>
+      </div>
+      <div class="grass">
+        <img width="2000px" height="500px" src="../static/images/lovepik-lawn-png-image_401317000_wh1200-removebg-preview.png"\>
+      </div>
+      <div class="capybara">
+        <img width="300px" src="../static/images/photo_2023-09-16_16-23-28-removebg-preview.png">
+      </div>
+      <div class="capybara2">
+        <img width="300px" src="../static/images/m_capylentes-removebg-preview.png">
+      </div>
+      <div class="capybara3">
+        <img width="300px" src="../static/images/mandarina_capy-removebg-preview.png">
+      </div>
     </section>
+<!-- Welcoming Text -->
     <section class="main align-items-stretch">
       <div class="main-principal d-flex flex-column justify-content-center align-items-center ">
-        <section class="website-pet"></section>
-        <h1 >Welcome to 
+        <h1 style="font-size: 90px;">Welcome to 
         <span class="Capy">Capy</span>
         <span class="Weather">Weather</span>
         </h1>
-        <h2>¿Que pongo aquí?</h2>
+        <h2 style="text-align: center;">Search for the weather by your ticket flight or by city</h2>
       </div>    
     </section>
+<!-- Search NavBar -->
+    <section class="search">
+      <div class="container search-position">
+          <form action="/search" method="POST" class="d-flex nav-bar-size" role="search">
+              <input class="form-control me-2" type="search" name="location" placeholder="Search" aria-label="Search">
+          </form>
+      </div>
+    </section>
+<!-- buttons -->
     <section class="searching-buttons">
       <div class="d-grid gap-2 d-md-block">
         <form action="/search_city">
