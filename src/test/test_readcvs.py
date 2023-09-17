@@ -30,3 +30,6 @@ class ReadCVS(unittest.TestCase):
         cache["MTY"] = weather_two
 
         self.assertDictEqual(getCache(self), cache)
+
+    if __name__ == '__main__':
+        unittest.main()

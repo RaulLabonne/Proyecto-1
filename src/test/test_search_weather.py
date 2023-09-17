@@ -37,3 +37,6 @@ class SearchWeather(unittest.TestCase):
         self.assertDictEqual(getCache(self), cache)
         compare_json = searchCache('MTY')
         self.assertEqual(weather, compare_json)
+
+    if __name__ == '__main__':
+        unittest.main()
