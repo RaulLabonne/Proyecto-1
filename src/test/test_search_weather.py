@@ -22,8 +22,7 @@ class SearchWeather(unittest.TestCase):
         city = 'MEX'
         weather = search(city)
         iata = request_iatacode("MEX")  # Da un array de tama\~no 2, donde esta la latitud y longitud
-        req = requests.get('https://api.openweathermap.org/data/2.5/weather?lat=' + iata[0] + '&lon=' + iata[
-            1] + '&appid=' + API_KEY)
+        req = requests.get('https://api.openweathermap.org/data/2.5/weather?lat=' + str(iata[0]) + '&lon=' + str(iata[1]) + '&appid=' + API_KEY)
         compare_json = req.json()
         self.assertEqual(weather, compare_json)
 
