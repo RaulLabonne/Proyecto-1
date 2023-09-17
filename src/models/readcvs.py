@@ -1,0 +1,3 @@
+
+def read(ticket):
+    return ""
