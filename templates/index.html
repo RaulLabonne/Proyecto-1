@@ -60,30 +60,30 @@
     <section class="search">
       <div class="container search-position">
           <form action="/search" method="POST" class="d-flex nav-bar-size" role="search">
-              <input class="form-control me-2" type="search" name="location" placeholder="Search" aria-label="Search">
+              <input class="form-control me-2" type="text" name="location" placeholder="Search" aria-label="Search">
           </form>
       </div>
     </section>
 <!-- buttons -->
     <section class="searching-buttons">
       <div class="d-grid gap-2 d-md-block">
-        <form action="/search_city" method="POST">
+        <form action="/search_city" method="GET">
           <!-- <button type="button" class="btn btn-city btn-lg" href="./search_city.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
             City
           </button> -->
-          <input type="submit" id="send-signup" name="signup" value="City" />
+          <input type="submit" id="send-signup" name="search_city" value="City" />
         </form>
-        <form action="/search_ticket" method="POST">
+        <form action="/search_ticket" method="GET">
           <!-- <button type="button" class="btn btn-ticket btn-lg" href="./search_ticket.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
             Ticket
           </button> -->
-          <input type="submit" id="send-signup" name="signup" value="Ticket"/>
+          <input type="submit" id="send-signup" name="search_ticket" value="Ticket"/>
         </form>
       </div>
     </section>

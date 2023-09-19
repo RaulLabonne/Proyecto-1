@@ -7,6 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method=="POST":
         cadena = request.form.get("location")
+        print(cadena)
     else:
         return render_template("index.html/");
 
@@ -15,12 +16,12 @@ def searchticket():
     return 'Searching ticket';
 
 @app.route('/search_city')
-def searchticket():
+def searchcity():
     return 'Searching city';
 
-@app.route('/result_city')
-def result():
-    return render_template("result_city.html");
+# @app.route('/result_city')
+# def result():
+#     return render_template("result_city.html");
 
 def page_not_found(error):
     return render_template("page_not_found.html"),404
