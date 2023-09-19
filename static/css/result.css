@@ -1,0 +1,11 @@
+.card{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    top: 15rem;
+}
+
+.btn{
+    position: relative;
+    top:16rem;
+}
