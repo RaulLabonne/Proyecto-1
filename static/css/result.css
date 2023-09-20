@@ -1,11 +1,77 @@
+@import url(https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap);
+
+h4{
+    font-family: "Libre Franklin";
+}
+
+p{
+    font-family: "Nanum Gothic";
+}
+
 .card{
     justify-content: center;
     display: flex;
     align-items: center;
-    top: 15rem;
+    top:7.5rem ;
 }
 
 .btn{
     position: relative;
     top:16rem;
 }
+
+.row{
+    width: 57rem;
+}
+
+/* ROW COLOREs */
+.row .col-3 {
+}
+
+.row .col-7{
+    background-color:rgb(0, 255, 8);
+}
+
+.row .col-sm {
+    font-size: 1.5rem;
+
+}
+
+/* TERMINA ROW */
+.capybara{
+    position: absolute;
+    top: 9rem;
+    right: 5rem;
+}
+
+/* .circular{
+    border-radius: 50%;
+} */
+
+#card-title{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.9rem;
+}
+
+/* ICON */
+#icon-weather{
+    background-color:rgb(0, 21, 255);
+    width: 7.8rem;
+    height: 7rem;
+}
+
+#max-temp, #min-temp{
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.col-3 .image-weather{
+    width: 6rem;
+    height: 5.6rem;
+    display: block;
+    padding-top: 10px;
+    margin:auto;
+}
+
+
