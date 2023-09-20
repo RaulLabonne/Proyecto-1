@@ -26,8 +26,6 @@ p{
 }
 
 /* ROW COLOREs */
-.row .col-3 {
-}
 
 .row .col-7{
     background-color:rgb(0, 255, 8);
@@ -38,20 +36,12 @@ p{
 
 }
 
-/* TERMINA ROW */
-.capybara{
-    position: absolute;
-    top: 9rem;
-    right: 5rem;
-}
-
-/* .circular{
-    border-radius: 50%;
-} */
 
 #card-title{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3.9rem;
+    text-align: center;
+    padding-bottom: 3rem;
 }
 
 /* ICON */
@@ -66,12 +56,10 @@ p{
     text-align: center;
 }
 
-.col-3 .image-weather{
-    width: 6rem;
-    height: 5.6rem;
-    display: block;
-    padding-top: 10px;
-    margin:auto;
+.weather-table{
+    padding-top: 4rem;
 }
 
-
+.second-row{
+    padding-top: 2rem;
+}
