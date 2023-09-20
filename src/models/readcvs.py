@@ -14,11 +14,5 @@ def read(ticket):
     weather=[sw.search(city1),sw.search(city2)]
     return weather
 
-def weatherCity(city):
-    data = dataCity()
-    cityData = data[data['IATA']==city]
-    if(cityData.empty):
-        return TypeError
-    weather = sw.search(cityData)
-    return weather
+
     
