@@ -50,7 +50,8 @@ h1{
 }
 
 /* NavBar */
-.search .nav-bar-size{
+
+.search #search{
     height: 60px;
 }
 
@@ -73,6 +74,7 @@ h1{
     left: 130px;
     bottom: 56px;
 }
+
 
 /* Images */
 
