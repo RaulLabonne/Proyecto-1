@@ -29,7 +29,6 @@ def apiCall(coord):
     url ='https://api.openweathermap.org/data/2.5/weather?lat='+str(coord[0])+'&lon='+str(coord[1])+'&appid='+API_KEY
     api = rq.get(url)
     if(api.status_code!=200):
-        print('error')
         return RuntimeError
     return api.json()
 
