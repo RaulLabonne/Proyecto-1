@@ -2,17 +2,17 @@ import unittest
 import requests
 from dotenv import load_dotenv
 import os
-
+from json import load
 from src.models.search_weather import getCache
 from src.models.search_weather import searchCache
 from src.models.search_weather import request_iatacode
 from src.models.search_weather import search
-
+from src.models.search_weather import __cache
 load_dotenv()
-
 API_KEY = os.getenv("API_KEY") #La key para hacer llamadas a la api
-class SearchWeather(unittest.TestCase):
 
+class SearchWeather(unittest.TestCase):
+    
     def test_read(self):
         invalid = 'Fail'
         try:
@@ -39,3 +39,5 @@ class SearchWeather(unittest.TestCase):
 
     if __name__ == '__main__':
         unittest.main()
+    
+

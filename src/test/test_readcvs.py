@@ -1,5 +1,4 @@
 import unittest
-import json
 
 from src.models.readcvs import read
 from src.models.search_weather import getCache
@@ -23,7 +22,7 @@ class ReadCVS(unittest.TestCase):
         weather_one = search("TLC")
         self.assertEqual(weathers_json[0], weather_one)
         
-        weather_two = search("MTY")
+        weather_two = search("Monterrey")
         self.assertEqual(weathers_json[1], weather_two)
         cache["TLC"] = weather_one
         cache["MTY"] = weather_two
