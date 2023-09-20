@@ -1,5 +1,7 @@
-import pandas as pd
+
+from unicodedata import normalize
 from src.database.readDB import dataCity
+
 def levenstein(str1, str2):
     d=dict()
     for i in range(len(str1)+1):
@@ -15,11 +17,11 @@ def levenstein(str1, str2):
 def searchLev(code):
     data = dataCity()
     line = data[data['IATA']=='zzzz']
-    lowest = 0
+    lowest = 99
     row = 0
     for i in range(len(data)):
-        distance = levenstein(data.loc[i,'IATA'],code)
-        distance2 = levenstein(data.loc[i,'cities'],code)
+        distance = levenstein(norm(data.loc[i,'IATA']),norm(code))
+        distance2 = levenstein(norm(data.loc[i,'cities']),norm(code))
         if(distance == 0|distance2==0):
           return data.iloc[[i]]  
         if(distance < lowest):
@@ -31,3 +33,6 @@ def searchLev(code):
     if(lowest>10):
         return line
     return data.iloc[[row]]
+
+def norm(code):
+    return normalize('NFKD',code).lower()

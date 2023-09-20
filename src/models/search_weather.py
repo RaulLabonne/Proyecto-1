@@ -1,8 +1,8 @@
 import requests as rq
 import os
 from dotenv import load_dotenv
-from src.database.readDB import dataCity
 from src.models.levenstein import searchLev
+
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
