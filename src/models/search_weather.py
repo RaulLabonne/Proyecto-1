@@ -3,7 +3,7 @@ from os import getenv
 from src.database.readDB import dataCity
 from src.models.levenstein import searchLev
 
-API_KEY = getenv("API_KEY")
+
 
 __cache={}
 
@@ -35,20 +35,29 @@ def request(coord, key):
     @param key: the key to use for storing the result in the cache
     @return: the weather data from the API response
     """
-    weather=apiCall(coord)
+    weather=apiCall(coord,getenv("API_KEY"))
     __cache[key]=weather
     return weather
 
-def apiCall(coord):
+
+def apiCall(coord,key):
     """
     Make an API call to retrieve weather information based on the given coordinates.
     @param coord: a tuple containing the latitude and longitude coordinates
     @return: the weather information in JSON format
     """
-    url ='https://api.openweathermap.org/data/2.5/weather?lat='+str(coord[0])+'&lon='+str(coord[1])+'&appid='+API_KEY+'&units=metric'
+    url ='https://api.openweathermap.org/data/2.5/weather?lat='+str(coord[0])+'&lon='+str(coord[1])+'&appid='+key+'&units=metric'
     api = rq.get(url)
-    if(api.status_code!=200):
-        return RuntimeError
+    try:
+        codeVerification(api)
+    except ValueError:
+        raise ValueError
+    except SyntaxError:
+        raise SyntaxError
+    except UserWarning:
+        raise UserWarning
+    except FutureWarning:
+        raise FutureWarning
     return api.json()
 
 def searchCache(iata):
@@ -82,6 +91,22 @@ def cityRow(code):
         data = dataCity()
         cityData = data[data["IATA"]==code]
     if(cityData.empty):
-        return TypeError
+        raise TypeError
     cityData.reset_index(inplace=True, drop=False)
     return cityData
+
+def codeVerification(api):
+    """
+    Verify the status code of an API response and return an appropriate warning or error based on the code.
+    @param api: the API response object
+    @return: a warning or error type based on the status code
+    """
+    if(api.status_code == 401): #this is a API key error
+        raise ValueError
+    if(api.status_code == 400): #this is a this is an error in the coordinates
+        raise SyntaxError
+    if(api.status_code == 429): #this is an error in the maximum requests
+        raise UserWarning
+    if(api.status_code >= 500): #this is a server error
+        raise FutureWarning
+    return ""
