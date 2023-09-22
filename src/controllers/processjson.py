@@ -12,8 +12,8 @@ def searchticket():
     origin_weather = toString(origin)
     destiny = weathers_json[1]
     destiny_weather = toString(destiny)
-    return render_template('result_city.html',
-                           city_Arrival=origin_weather[0],
+    return render_template('result_ticket.html',
+                           city_arrival=origin_weather[0],
                            weather_arrival=origin_weather[1],
                            temp_arrival=origin_weather[2],
                            temp_min_arrival=origin_weather[3],
@@ -21,8 +21,7 @@ def searchticket():
                            sensation_arrival=origin_weather[5],
                            humidity_arrival=origin_weather[6],
                            pressure_arrival=origin_weather[7],
-                           speed_arrival=origin_weather[8],
-                           precipitation_arrival=origin_weather[9],
+                           precipitation_arrival=origin_weather[8],
                            city_destiny=destiny_weather[0],
                            weather_destiny=destiny_weather[1],
                            temp_destiny=destiny_weather[2],
@@ -31,8 +30,7 @@ def searchticket():
                            sensation_destiny=destiny_weather[5],
                            humidity_destiny=destiny_weather[6],
                            pressure_destiny=destiny_weather[7],
-                           speed_destiny=destiny_weather[8],
-                           precipitation_destiny=destiny_weather[9]
+                           precipitation_destiny=destiny_weather[8]
                            )
 
 

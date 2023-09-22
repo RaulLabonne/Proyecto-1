@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Rubik&display=swap);
 
 
-p{
+.container p{
     font-family: "Nanum Gothic";
     font-size: 1.7rem;
 }
@@ -13,6 +13,16 @@ p{
     display: flex;
     align-items: center;
     top:7.5rem ;
+}
+
+.info h5{
+    font-size: 1.7rem;;
+}
+
+.card-body p{
+    font-family: "Nanum Gothic";
+    background-color: beige;
+    font-size: 1.4rem;
 }
 
 .btn{
@@ -37,6 +47,37 @@ p{
     
 }
 
+.cities .destiny{
+    text-align: right;
+}
+
+.temp_p{
+    padding-top: 4.5rem;
+}
+
+.icon-weather {
+    width: 17rem;
+    height: 7rem;
+}
+
+.second-row{
+    padding-top: 2rem;
+}
+
+.primary-city-title{
+    text-align: left;
+    background-color: rgb(230, 150, 59);
+}
+
+.secondary-city-title{
+    text-align: right;
+    background-color: rgb(230, 150, 59);
+    
+}
+
+.info{
+    padding-top: 45px;
+}
 
 #capybara{
     width: 10rem;
@@ -58,14 +99,4 @@ p{
     font-size: 2.8rem;
     text-align: center;
     padding-bottom: 3rem;
-}
-
-.icon-weather {
-    /* background-color:rgb(0, 255, 128); */
-    width: 17rem;
-    height: 7rem;
-}
-
-.second-row{
-    padding-top: 2rem;
 }
