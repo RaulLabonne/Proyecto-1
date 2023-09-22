@@ -51,5 +51,4 @@ def norm(code):
     @param code: the code to be normalized
     @return: the normalized code
     """
-    
     return normalize('NFKD',code).lower()

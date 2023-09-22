@@ -1,4 +1,4 @@
-import pandas as pd
+
 from src.models import search_weather as sw
 from src.database.readDB import dataDB
 
