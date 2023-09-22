@@ -45,7 +45,7 @@ def apiCall(coord):
     @param coord: a tuple containing the latitude and longitude coordinates
     @return: the weather information in JSON format
     """
-    url ='https://api.openweathermap.org/data/2.5/weather?lat='+str(coord[0])+'&lon='+str(coord[1])+'&appid='+API_KEY
+    url ='https://api.openweathermap.org/data/2.5/weather?lat='+str(coord[0])+'&lon='+str(coord[1])+'&appid='+API_KEY+'&units=metric'
     api = rq.get(url)
     if(api.status_code!=200):
         return RuntimeError
