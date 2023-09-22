@@ -31,15 +31,11 @@ def searchLev(code):
     lowest = 99
     row = 0 # row index
     for i in range(len(data)):
-        distance = levenstein(norm(data.loc[i,'IATA']),norm(code))
-        distance2 = levenstein(norm(data.loc[i,'cities']),norm(code))
-        if(distance == 0|distance2==0):
+        distance = levenstein(norm(data.loc[i,'cities']),norm(code))
+        if(distance == 0):
           return data.iloc[[i]]  
         if(distance < lowest):
             lowest = distance
-            row = i
-        if(distance2 < lowest):
-            lowest = distance2
             row = i
     if(lowest>10):
         return line

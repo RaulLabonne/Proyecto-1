@@ -1,6 +1,6 @@
 import requests as rq
 from os import getenv
-
+from src.database.readDB import dataCity
 from src.models.levenstein import searchLev
 
 API_KEY = getenv("API_KEY")
@@ -76,7 +76,11 @@ def cityRow(code):
     @param code: the city code
     @return: the city data as a pandas DataFrame. If no data is found, return a TypeError.
     """
-    cityData =searchLev(code)
+    if(len(code)>3):
+        cityData =searchLev(code)
+    else:
+        data = dataCity()
+        cityData = data[data["IATA"]==code]
     if(cityData.empty):
         return TypeError
     cityData.reset_index(inplace=True, drop=False)
