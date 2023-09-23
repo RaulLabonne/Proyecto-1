@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from src.models.readcvs import read
 from src.models.search_weather import search
+from werkzeug.exceptions import HTTPException
 import pprint
 
 app = Flask(__name__)
@@ -85,9 +86,9 @@ def toString(json):
     clouds = clouds_dict['all']
     return [city, weather_type, temp, temp_min, temp_max, sensation, humidity, pressure, speed, clouds]
 
-
-def page_not_found(error):
-    return render_template("page_not_found.html"), 404
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 
 if __name__ == "_main_":
