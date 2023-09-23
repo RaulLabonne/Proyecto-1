@@ -58,19 +58,20 @@ h1{
 /* Buttons */
 .searching-buttons{
     position: relative;
-    bottom: 14rem;
+    top: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .searching-buttons .btn-city{
     background-color: #e6920b;
-    position: absolute;
+    position: relative;
+    left:20rem;
 }
 
 .searching-buttons .btn-ticket{
     background-color: #e6920b;
     position: relative;
-    left: 130px;
+    left: 35rem;
 }
 
 /* Images */

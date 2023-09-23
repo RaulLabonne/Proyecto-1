@@ -3,7 +3,6 @@
 {% block title %}Welcome{% endblock %}
 
 {% block body %}
-<!-- Welcoming Text -->
 <section class="main align-items-stretch">
   <div class="main-principal d-flex flex-column justify-content-center align-items-center ">
     <h1 style="font-size: 90px;">Welcome to 
@@ -13,26 +12,20 @@
     <h2 style="text-align: center;">Search for the weather by your ticket flight or by city</h2>
   </div>    
 </section>
-<!-- Search NavBar -->
 <section class="search">
   <div class="container search-position nav-bar-size">
-      <input class="form-control me-2" id="search" width="20px" type="text" name="location" placeholder="Search" aria-label="Search">
+      <form action="search_city" method="POST">
+        <input class="form-control me-2" id="search" width="20px" type="text" name="location" placeholder="Search" aria-label="Search">
+        <div class="searching-buttons">
+          <button type="submit" class="btn btn-city btn-lg" >City</button>
+          <button type="submit" class="btn btn-ticket btn-lg" >Ticket</button>
+        </div>
+      </form>
   </div>
 </section>
-<!-- buttons -->
-<section class="searching-buttons">
-  <div>
-    <div class="btn-ticket-position">
-      <form action="/search_city" method="GET">
-        <input type="submit"  class="btn btn-city btn-lg" name="result_city" value="City" />
-      </form>
-    </div>
-    <div class="btn-ticket-position">
-      <form action="/search_ticket" method="GET">
-        <input type="submit"  class="btn btn-ticket btn-lg" name="result_ticket" value="Ticket"/>
-      </form>
-    </div>
-  </div>
-</section>
+<<<<<<< HEAD
+{%endblock%}
+=======
 {%endblock%}
 
+>>>>>>> 852332f110ee1e7d1bd311a9b6312aa2b1b3ddba
