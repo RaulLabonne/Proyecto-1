@@ -15,8 +15,8 @@
     top:7.5rem ;
 }
 
-.info h5{
-    font-size: 1.7rem;;
+.info h5, .temp_p{
+    font-size: 1.6rem;;
 }
 
 .card-body p{
@@ -32,6 +32,10 @@
 
 .row{
     width: 57rem;
+}
+
+.temp-icon{
+    position: relative;
 }
 
 .arrival{
@@ -99,4 +103,16 @@
     font-size: 2.8rem;
     text-align: center;
     padding-bottom: 3rem;
+}
+
+#temp-p{
+    font-size: 27px;
+    position: relative;
+    bottom: 50px;
+}
+
+#temp-icon{
+    position: relative;
+    bottom: 40px;
+    height: 150px;
 }
