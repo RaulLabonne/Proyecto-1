@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from src.models.readcvs import read
 from src.models.search_weather import search
+import pprint
 
 app = Flask(__name__)
 
@@ -14,15 +15,37 @@ def index():
         return render_template("index.html/")
 
 
-@app.route('/search_ticket')
+@app.route('/search_city', methods=['POST'])
+def searchcity():
+    city = request.form['location']
+    if len(city) == 16:
+        return redirect(url_for('searchticket'))
+    weather_city = search(city)
+    data_weather = toString(weather_city)
+    return render_template('result_city.html',
+                           city=data_weather[0],
+                           weather_type=data_weather[1],
+                           temp=data_weather[2],
+                           min_temp=data_weather[3],
+                           max_temp=data_weather[4],
+                           sensation=data_weather[5],
+                           humidity=data_weather[6],
+                           pressure=data_weather[7],
+                           speed=data_weather[8],
+                           clouds=data_weather[9],
+                           )
+
+
+@app.route('/search_city', methods=['POST'])
 def searchticket():
-    ticket = request.args.get('location')
+    ticket = request.form['location']
     weathers_json = read(str(ticket))
     origin = weathers_json[0]
     origin_weather = toString(origin)
     destiny = weathers_json[1]
     destiny_weather = toString(destiny)
     return render_template('result_ticket.html',
+                           ticket_html=ticket,
                            city_arrival=origin_weather[0],
                            weather_arrival=origin_weather[1],
                            temp_arrival=origin_weather[2],
@@ -43,25 +66,6 @@ def searchticket():
                            pressure_destiny=destiny_weather[7],
                            speed_destiny=destiny_weather[8],
                            clouds_destiny=destiny_weather[9]
-                           )
-
-
-@app.route('/search', methods=['GET'])
-def searchcity():
-    city = request.args.get('location')
-    weather_city = search(city)
-    data_weather = toString(weather_city)
-    return render_template('result_city.html',
-                           city=data_weather[0],
-                           weather_type=data_weather[1],
-                           temp=data_weather[2],
-                           min_temp=data_weather[3],
-                           max_temp=data_weather[4],
-                           sensation=data_weather[5],
-                           humidity=data_weather[6],
-                           pressure=data_weather[7],
-                           speed=data_weather[8],
-                           clouds=data_weather[9],
                            )
 
 
