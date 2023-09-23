@@ -19,7 +19,7 @@ def index():
 def searchcity():
     city = request.form['location']
     if len(city) == 16:
-        return redirect(url_for('searchticket'))
+        return searchticket(city)
     weather_city = search(city)
     data_weather = toString(weather_city)
     return render_template('result_city.html',
@@ -36,9 +36,7 @@ def searchcity():
                            )
 
 
-@app.route('/search_city', methods=['POST'])
-def searchticket():
-    ticket = request.form['location']
+def searchticket(ticket):
     weathers_json = read(str(ticket))
     origin = weathers_json[0]
     origin_weather = toString(origin)
