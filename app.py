@@ -1,24 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 from src.models.readcvs import read
 from src.models.search_weather import search
-from werkzeug.exceptions import HTTPException
-import pprint
 
 app = Flask(__name__)
 
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    if request.method == "POST":
-        cadena = request.form.get("location")
-    else:
-        return render_template("index.html/")
+    return render_template("index.html/")
 
 
 @app.route('/search_city', methods=['POST'])
 def searchcity():
     city = request.form['location']
-    if (len(city) == 16 & city.find(" ")==-1 ):
+    if ((len(city) == 16) & (city.count(" ")==0)):
         return searchticket(city)
     try:
         weather_city = search(city)
@@ -49,7 +44,6 @@ def searchcity():
 
 
 def searchticket(ticket):
-    
     weathers_json = read(str(ticket))
     try:
         origin = weathers_json[0]
