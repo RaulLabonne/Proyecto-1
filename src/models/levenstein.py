@@ -37,8 +37,10 @@ def searchLev(code):
         if(distance < lowest):
             lowest = distance
             row = i
-    if(lowest>10):
+    if(lowest==len(code)):
+        
         return line
+    
     return data.iloc[[row]]
 
 def norm(code):

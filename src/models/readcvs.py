@@ -13,7 +13,7 @@ def read(ticket):
     dataTicket = data[data['num_ticket'] == ticket]
     dataTicket.reset_index(inplace=True, drop=False)
     if(dataTicket.empty):
-        return TypeError
+        raise TypeError
     city1 =dataTicket.loc[0,'origin']
     city2 = dataTicket.loc[0,'destination']
     weather=[sw.search(city1),sw.search(city2)]
