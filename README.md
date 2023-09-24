@@ -86,13 +86,13 @@ esto activara el entorno virtual (en caso de que se desactive) y ejecutara el pr
 ### Instalar y ejecutar en linux y MacOs
 ya en la carpeta de la app, correremos el siguiente comando:
 ```
-bash src/resource/install.bash
+bash src/resource/install.sh
 ```
 esto creara el entorno virtual en donde se correra el programa y ademas instalara todas las librerias nesesarias.
 
 ya hecho esto, para ejecutar el programa solo basta ejecutar el siguiente comando en la terminal:
 ```
-bash src/resource/execute.bash
+bash src/resource/execute.sh
 ```
 esto activara el entorno virtual (en caso de que se desactive) y ejecutara el programa.
 
