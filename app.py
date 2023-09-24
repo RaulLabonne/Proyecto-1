@@ -11,7 +11,6 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
         cadena = request.form.get("location")
-        print(cadena)
     else:
         return render_template("index.html/")
 
@@ -21,7 +20,19 @@ def searchcity():
     city = request.form['location']
     if len(city) == 16:
         return searchticket(city)
-    weather_city = search(city)
+    try:
+        weather_city = search(city)
+    except TypeError:
+        return page_not_found(errorEscritura())
+    except ValueError:
+        return page_not_found(errorAPI(1))
+    except SyntaxError:
+        return page_not_found(errorLectura())
+    except UserWarning:
+        return page_not_found(errorCall())
+    except FutureWarning:
+        return page_not_found(errorAPI())
+    
     data_weather = toString(weather_city)
     return render_template('result_city.html',
                            city=data_weather[0],
@@ -38,10 +49,35 @@ def searchcity():
 
 
 def searchticket(ticket):
+    
     weathers_json = read(str(ticket))
-    origin = weathers_json[0]
+    try:
+        origin = weathers_json[0]
+    except TypeError:
+        return page_not_found(errorEscritura())
+    except ValueError:
+        return page_not_found(errorAPI(1))
+    except SyntaxError:
+        return page_not_found(errorLectura())
+    except UserWarning:
+        return page_not_found(errorCall())
+    except FutureWarning:
+        return page_not_found(errorAPI())
+    
     origin_weather = toString(origin)
-    destiny = weathers_json[1]
+    try:
+        destiny = weathers_json[1]
+    except TypeError:
+        return page_not_found(str(errorEscritura()))
+    except ValueError:
+        return page_not_found(errorAPI(1))
+    except SyntaxError:
+        return page_not_found(errorLectura())
+    except UserWarning:
+        return page_not_found(errorCall())
+    except FutureWarning:
+        return page_not_found(errorAPI())
+    
     destiny_weather = toString(destiny)
     return render_template('result_ticket.html',
                            ticket_html=ticket,
@@ -86,9 +122,21 @@ def toString(json):
     clouds = clouds_dict['all']
     return [city, weather_type, temp, temp_min, temp_max, sensation, humidity, pressure, speed, clouds]
 
+
+def errorEscritura():
+    return "lo la ciudad que buscas o ticket no estan en la base de datos"
+def errorLectura():
+    return "la base de datos no esta o contiene datos erroneos"
+def errorAPI(num):
+    if(num==1):
+        return "tu API key no es valida, revisala"
+    return "la API no responde, intente mas tarde"
+def errorCall():
+    return "se han superado el limite de llamadas permitidas, por favor espere un minuto o se baneara su API"
+
 @app.errorhandler(404)
-def page_not_found(e):
-    return render_template("404.html"), 404
+def page_not_found(fail):
+    return render_template("404.html",errorS=fail), 404
 
 
 if __name__ == "_main_":
