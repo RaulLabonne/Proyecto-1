@@ -18,7 +18,7 @@ def index():
 @app.route('/search_city', methods=['POST'])
 def searchcity():
     city = request.form['location']
-    if len(city) == 16:
+    if (len(city) == 16 & city.find(" ")==-1 ):
         return searchticket(city)
     try:
         weather_city = search(city)
@@ -53,6 +53,7 @@ def searchticket(ticket):
     weathers_json = read(str(ticket))
     try:
         origin = weathers_json[0]
+        destiny = weathers_json[1]
     except TypeError:
         return page_not_found(errorEscritura())
     except ValueError:
@@ -65,19 +66,6 @@ def searchticket(ticket):
         return page_not_found(errorAPI())
     
     origin_weather = toString(origin)
-    try:
-        destiny = weathers_json[1]
-    except TypeError:
-        return page_not_found(str(errorEscritura()))
-    except ValueError:
-        return page_not_found(errorAPI(1))
-    except SyntaxError:
-        return page_not_found(errorLectura())
-    except UserWarning:
-        return page_not_found(errorCall())
-    except FutureWarning:
-        return page_not_found(errorAPI())
-    
     destiny_weather = toString(destiny)
     return render_template('result_ticket.html',
                            ticket_html=ticket,
