@@ -3,12 +3,12 @@
 {% block body %}
   <div class="card align-items-center container d-flex text-center" style="width: 60rem;">
     <div class="card-body">
-        <div id="error-title"">
-            <h1>Sorry, Page Not Found</h1>
+        <div id="error-title">
+            <h1>lo Sentimos, algo ha salido mal</h1>
         </div>
         <div id="error-text">
-            <h2>What you were looking for is just not there.</h2>
-            <h4><a href="{{ url_for('index') }}">Go somewhere nice</a></h4>
+            <h2>{{errorS}}</h2>
+            <h4><a href="{{ url_for('index') }}">Regresa al inicio haciendo click aqui</a></h4>
         </div>
     </div>
   </div>

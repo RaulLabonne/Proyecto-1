@@ -17,7 +17,6 @@ def dataCity():
     Load city data from a CSV file named "cities3.csv" located in the same directory as the script.
     @return: a pandas DataFrame containing the city data.
     """
-    
     current_dir = os.path.dirname(os.path.realpath(__file__)) 
     filename=os.path.join(current_dir,"cities3.csv")
     data = pd.read_csv(filename,header=0)
