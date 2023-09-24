@@ -5,34 +5,130 @@
 {% block body %}
     <div class="card align-items-center container d-flex text-center" style="width: 60rem;">
       <div class="card-body">
+        <a href="{{ url_for('index') }}" id="btn-back-city">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+        </a>
       <div class="container">
         <div class="row">
-          <div class="col-15" id="card-title">{{city}}</div>
+          <div class="col-15" id="card-title">
+            {{city}}
+          </div>
         </div>
+        <hr>
         <div class="row">
           <div class="col space">
             <div>
-              <i>
-                <figure>
-                  <img class ="icon-weather" src="../static/images/cloud.png">
-                </figure>
-              </i>
               <h3>{{weather_type}}</h3>
+              {% if weather_type == "Clear" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/dom.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Clouds" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nube.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Thunderstorm" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/thunderstorm.png">
+                  </figure>
+                </i>  
+              {% elif weather_type == "Drizzle" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/clima.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Snow" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nieve.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Rain" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/lluvia.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Mist" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/neblinoso.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Smoke" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/smoke.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Haze" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nube.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Dust" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/ciudad.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Fog" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/neblinoso.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Sand" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/ciudad.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Ash" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/ciudad.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Squall" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/cloud.png">
+                  </figure>
+                </i>
+              {% elif weather_type == "Tornado" %}  
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/tornado.png">
+                  </figure>
+                </i>
+
+              {% endif %}
             </div>
           </div>
           <div class="col">
             <figure>
-              <img id="capybara" src="../static/images/mandarina_capy-removebg-preview.png"/>
+              <img id="capybara" width="170rem" src="../static/images/mandarina_capy-removebg-preview.png"/>
             </figure>
           </div>
           <div class="col temp_p">
-            <h3>{{temp}}</h3>
+            <h4>Temperature</h4>
+            <p>{{temp}} °C<p>
           </div>
           <div class="col">
               <h3>Max. Tem.</h3>
-              <p>{{max_temp}}</p>
+              <p>{{max_temp}} °C</p>
               <h3>Min. Tem.</h3>
-              <p>{{min_temp}}</p>
+              <p>{{min_temp}} °C</p>
             </div>
           </div>
         </div>
@@ -40,29 +136,29 @@
           <div class="row">
             <div class="col">
               <h4>Feels like</h4>
-              <p>{{sensation}}</p>
+              <p>{{sensation}} °C</p>
             </div>
             <div class="col">
               <h4>Humidity</h4>
-              <p>{{humidity}}</p>
+              <p>{{humidity}}  g / m³ </p>
             </div>
             <div class="col">
               <h4>Rain</h4>
-              <p>{{precipitation}}</p>
+              <p>N/A</p>
             </div>
           </div>
           <div class="row second-row ">
             <div class="col">
               <h4>Wind</h4>
-              <p>{{speed}}</p>
+              <p>{{speed}} m/s</p>
             </div>
             <div class="col">
               <h4>Clouds</h4>
-              <p>{{clouds}}</p>
+              <p>{{clouds}} %</p>
             </div>
             <div class="col">
               <h4>Pressure</h4>
-              <p>{{pressure}}</p>
+              <p>{{pressure}} Pa</p>
             </div>
           </div>
         </div>
