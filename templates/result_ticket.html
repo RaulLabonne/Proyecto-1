@@ -3,52 +3,246 @@
 {% block title %}result_ticket{% endblock %}
 
 {%block body%}
-    <div class="card align-items-center container d-flex" style="width: 65rem;">
+    <div class="card container" style="width: 70rem; top: 10px;">
         <div class="card-body">
           <div class="row">
+            <a href="{{ url_for('index') }}" id="btn-back">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+              </svg>
+            </a>
             <div class="col-15" id="card-title-ticket">No.Ticket: {{ticket}}</div>
           </div>
+          <hr>
           <div class="row cities">
             <div class="col  arrival"><h3>Salida</h3></div>
             <div class="col  destiny"><h3>Llegada</h3></div>
           </div>
-          <div class="row">
+          <div class="row title-temp">
             <div class="col primary-city-title"><h2>{{city_arrival}}</h2></div>
-            <div class="col-2"><h4>{{temp_p_arrival}}</h4></div>
+            <div class="col-2 text-center temp"><h2>{{temp_arrival}} °C</h2></div>
             <div class="col"></div>
-            <div class="col-2"><h4>{{temp_p_destiny}}</h4></div>
+            <div class="col-2 text-center temp "><h2>{{temp_destiny}}  °C</h2></div>
             <div class="col secondary-city-title"><h2>{{city_destiny}}</h2></div>
           </div>
-          <div class="row">
+          <div class="row first-row">
             <div class="col-2 container align-items-center text-center">
-              <h4>{{weather_arrival}}</h4>
+              <h3>{{weather_arrival}}</h3>
+                {% if weather_arrival == "Clear" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/dom.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Clouds" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/nube.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Thunderstorm" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/thunderstorm.png">
+                    </figure>
+                  </i>  
+                {% elif weather_arrival == "Drizzle" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/clima.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Snow" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/nieve.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Rain" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/lluvia.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Mist" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/neblinoso.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Smoke" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/smoke.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Haze" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/nube.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Dust" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/ciudad.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Fog" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/neblinoso.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Sand" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/ciudad.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Ash" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/ciudad.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Squall" %}
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/nube.png">
+                    </figure>
+                  </i>
+                {% elif weather_arrival == "Tornado" %}  
+                  <i>
+                    <figure>
+                      <img class ="icon-weather" src="../static/images/tornado.png">
+                    </figure>
+                  </i>
+
+                {% endif %}
             </div>
-            <div class="col-4">
-              <h5>{{max_temp_arrival}}</h5>
-              <h5>{{min_temp_destiny}}</h5>
+            <div class="col-3 text-center max-min-temp">
+              <h2>Max. Temp.</h2>
+              <h3>{{max_temp_arrival}} °C</h3>
+              <h2>Min. Temp.</h2>
+              <h3>{{min_temp_destiny}} °C</h3>
             </div>
             <div class="col"></div>
-            <div class="col-2 text-left">
-              <h4>{{weather_destiny}}</h4>
+            <div class="col-2 text-center">
+              <h3>{{weather_destiny}}</h3>
+                {% if weather_destiny == "Clear" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/dom.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Clouds" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nube.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Thunderstorm" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/thunderstorm.png">
+                  </figure>
+                </i>  
+              {% elif weather_destiny == "Drizzle" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/clima.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Snow" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nieve.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Rain" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/lluvia.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Mist" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/neblinoso.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Smoke" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/smoke.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Haze" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nube.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Dust" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/ciudad.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Fog" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/neblinoso.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Sand" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/ciudad.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Ash" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/ciudad.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Squall" %}
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/nube.png">
+                  </figure>
+                </i>
+              {% elif weather_destiny == "Tornado" %}  
+                <i>
+                  <figure>
+                    <img class ="icon-weather" src="../static/images/tornado.png">
+                  </figure>
+                </i>
+
+              {% endif %}
             </div>
-            <div class="col-3">
-              <h5>{{max_temp_destiny}}</h5>
-              <h5>{{min_temp_destiny}}</h5>
+            <div class="col-3 text-center max-min-temp">
+              <h2>Max. Temp.</h2>
+              <h3>{{max_temp_destiny}} °C</h3>
+              <h2>Max. Temp.</h2>
+              <h3>{{min_temp_destiny}} °C</h3>
             </div>
           </div>
           <div class="row info">
-            <div class="col-2 container align-items-center text-center"><h5>Feels like</h5><p>{{sensation_arrival}}</p></div>
-            <div class="col-3 container align-items-center text-center"><h5>Humidity</h5><p>{{humidity_arrival}}</p></div>
+            <div class="col-2 container align-items-center text-center"><h5>Feels like</h5><p>{{sensation_arrival}} °C</p></div>
+            <div class="col-3 container align-items-center text-center"><h5>Humidity</h5><p>{{humidity_arrival}}  g / m³</p></div>
             <div class="col"></div>
-            <div class="col-2 container align-items-center text-center"><h5>Feels like</h5><p>{{sensation_destiny}}</p></div>
-            <div class="col-3 container align-items-center text-center"><h5>Humidity</h5><p>{{humidity_destiny}}</p></div>
+            <div class="col-2 container align-items-center text-center"><h5>Feels like</h5><p>{{sensation_destiny}} °C</p></div>
+            <div class="col-3 container align-items-center text-center"><h5>Humidity</h5><p>{{humidity_destiny}}  g / m³</p></div>
           </div>
           <div class="row info">
-            <div class="col-2 container align-items-center text-center"><h5>Pressure</h5><p>{{pressure_arrival}}</p></div>
-            <div class="col-3 container align-items-center text-center"><h5>Rain</h5><p>{{rain_arrival}}</p></div>
+            <div class="col-2 container align-items-center text-center"><h5>Pressure</h5><p>{{pressure_arrival}}  Pa</p></div>
+            <div class="col-3 container align-items-center text-center"><h5>Clouds</h5><p>{{clouds_arrival}}  %</p></div>
             <div class="col"></div>
-            <div class="col-2 container align-items-center text-center"><h5>Pressure</h5><p>{{pressure_destiny}}</p></div>
-            <div class="col-3 container align-items-center text-center"><h5>Rain</h5><p>{{rain_destiny}}</p></div>
+            <div class="col-2 container align-items-center text-center"><h5>Pressure</h5><p>{{pressure_destiny}}  Pa</p></div>
+            <div class="col-3 container align-items-center text-center"><h5>Clouds</h5><p>{{clouds_destiny}} %</p></div>
           </div>
         </div>
       </div>
