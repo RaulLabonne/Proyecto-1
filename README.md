@@ -1,13 +1,14 @@
 
-## Capy Weather
+# Capy Weather
 
-### Proposito
+## Proposito
 Se deberá entregar una aplicación gráfica la cual acepte como entrada, un ticket o el nombre
 de la ciudad a la cual se esta interesado en conocer el clima. La entrada debe ser capaz de aceptar
 errores, por ejemplo: Monterye, Montery, Monterey y MTY, cada uno de estos deberá contestar
 con el clima de Monterey.
 
-### Dependencias nesesarias:
+## Dependencias nesesarias
+* Python (3.8 o superior)
 * Pandas
 * Flask
 * requests
@@ -37,11 +38,71 @@ Para poder hacer las diferentes plantillas de html, se ocupo componentes del fra
 
 
 ### Resolucion de problema
-Lo primero a tratar seria como es que funcionaria la app por el lado del modelo, para esto se diseñaron los diagramas de flujo siguientes:
+Lo primero a tratar seria como es que funcionaria la app por el lado del modelo, para esto se diseñaron los siguientes pseudocodigos:
 
-En el primero se ve la estrcutura bassica que seguira el programa dado un string de entrada, como se puede ver, primero de comprobara si el string es un ticket o no, si lo es, se llamara a `read()`, y si no lo es se llamara a `search()`, ademas se puede ver que read regresa una tupla de climas y search solo un clima.
+![codigo1](src/resource/images/algoritmo1.png)
 
-en este se puede ver el funcionamiento de el metodo `read()`, que lo unico que hace es buscar en el dataset la fila que contiene el ticket y mandar a llamar a `search()`.
+![codigo2](src/resource/images/algoritmo2.png)
+
+![codigo3](src/resource/images/algoritmo3.png)
+
+![codigo4](src/resource/images/algoritmo4.png)
+
+![codigo5](src/resource/images/algoritmo5.png)
+
+![codigo6](src/resource/images/algoritmo6.png)
+
+![codigo7](src/resource/images/algoritmo7.png)
+
+en estos se puede observar a detalle que es lo que hacen los algoritmos del programa, claro esta que en la documentacion del propio codigo se dan mas detalles acerca de cada uno.
+
+## Codigo de otras fuentes
+en el proyecto hicimos uso de codigo externo, especificamnete tomamos la implementacion del algoritmo de Levenshtein que se encuentra dsiponible en wikipedia[^7], esto fue hecho asi porque es una version mas eficiente de la que nosotros podriamos hacer y ademas como tal solo calcula la distancia de Levenshtein de 2 strings, la implentacion de este algoritmo para que nos ayudara a buscar coincidencias fue totalmente original.
+el codigo en cuestion es la funcion [`levenstein()`](src/models/levenstein.py)
+
+## Como instalar y correr el programa
+>:warning:
+> se estas instruciones estan garantizadas que funcionan para Python 3.8 en adelante, ademas presupone que tienes pip instalado(cualquier version de Python igual o superior a la 3.8 lo tiene preinstalado) si no se tiene pip instalado se debera instalar en su equipo
+
+lo primero que se tiene que hacer es clonar el repositorio, para esto pegaremos el siguiente comando en la terminal:
+```
+git clone https://github.com/RaulLabonne/Proyecto-1.git
+```
+ya que hemos clonado el repositorio nos situaremos justo el la carpeta del repositorio, ahi se correra el siguiente comando dependiendo de que sistema operativo tengamos.
+
+### Instalar y ejecutar en windows
+ya en la carpeta de la app, correremos el siguiente comando:
+```
+.\src\resource\install.ps1
+```
+tambien lo puedes ejecutar desde el explorador de archivos haciendo doble click en `.../Proyecto-1/src/resource/install.ps1`, esto creara el entorno virtual en donde se correra el programa y ademas instalara todas las librerias nesesarias.
+
+ya hecho esto, para ejecutar el programa solo basta ejecutar el siguiente comando en la terminal:
+```
+.\src\resource\execute.ps1
+```
+esto activara el entorno virtual (en caso de que se desactive) y ejecutara el programa.
+
+### Instalar y ejecutar en linux y MacOs
+ya en la carpeta de la app, correremos el siguiente comando:
+```
+bash src/resource/install.sh
+```
+esto creara el entorno virtual en donde se correra el programa y ademas instalara todas las librerias nesesarias.
+
+ya hecho esto, para ejecutar el programa solo basta ejecutar el siguiente comando en la terminal:
+```
+bash src/resource/execute.sh
+```
+esto activara el entorno virtual (en caso de que se desactive) y ejecutara el programa.
+
+ya con el programa corriendo, pegaremos en el navegador la siguiente direccion:
+```
+http://127.0.0.1:5000
+```
+y en esa pagina podremos usar el programa. Para desactivarlo basta con oprimir `Ctrl+C` en la terminal
+
+## Fuentes de consulta
 
 [^1]: https://openweathermap.org
 [^2]: https://pandas.pydata.org
@@ -49,3 +110,4 @@ en este se puede ver el funcionamiento de el metodo `read()`, que lo unico que h
 [^4]: https://flask.palletsprojects.com/en/2.3.x/
 [^5]: https://getbootstrap.com/
 [^6]: https://getbootstrap.com/docs/5.3/layout/grid/
+[^7]: Distancia de Levenshtein. (2023, 7 de enero). Wikipedia, La enciclopedia libre. desde https://es.wikipedia.org/w/index.php?title=Distancia_de_Levenshtein&oldid=148447096.
