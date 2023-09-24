@@ -33,6 +33,8 @@ Con el framework de Flask, se pudo crear plantillas de html de manera eficiente 
 
 Después del proceso de datos y la obtencion de informacion de la api OpenWeather[^1], dependiendo de la busqueda los resultados se van a presentar de manera amigable en las plantillas result_city.html o result_ticket.html.
 
+Para poder hacer las diferentes plantillas de html, se ocupo componentes del framework de Bootstrap[^5], como la barra de navegación y la carta que se despliega tanto en las plantillas html de los errores y los resultados, además de usar grid[^6] para el acomodamiento de los datos en las plantillas de los resulatdos.
+
 
 ### Resolucion de problema
 Lo primero a tratar seria como es que funcionaria la app por el lado del modelo, para esto se diseñaron los diagramas de flujo siguientes:
@@ -45,3 +47,5 @@ en este se puede ver el funcionamiento de el metodo `read()`, que lo unico que h
 [^2]: https://pandas.pydata.org
 [^3]: https://pypi.org/project/requests/
 [^4]: https://flask.palletsprojects.com/en/2.3.x/
+[^5]: https://getbootstrap.com/
+[^6]: https://getbootstrap.com/docs/5.3/layout/grid/
