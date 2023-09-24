@@ -86,9 +86,8 @@ def toString(json):
     clouds = clouds_dict['all']
     return [city, weather_type, temp, temp_min, temp_max, sensation, humidity, pressure, speed, clouds]
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template("404.html"), 404
+def page_not_found(error):
+    return render_template("page_not_found.html"), 404
 
 
 if __name__ == "_main_":
