@@ -1,7 +1,11 @@
 @import url(https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Assistant&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Rubik&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
 
+hr{
+    height: 35px;
+}
 
 .container p{
     font-family: "Nanum Gothic";
@@ -56,12 +60,24 @@
 }
 
 .temp_p{
-    padding-top: 4.5rem;
+    padding-top: 2.5rem;
+}
+
+.title-temp .temp{
+    font-family: "Lato";
+    text-align: center;
+}
+
+.max-min-temp h3{
+    background-color: rgb(242, 225, 190);
+}
+
+.first-row{
+    padding-top: 35px;
 }
 
 .icon-weather {
-    width: 17rem;
-    height: 7rem;
+    width: 9.5rem;
 }
 
 .second-row{
@@ -83,10 +99,6 @@
     padding-top: 45px;
 }
 
-#capybara{
-    width: 10rem;
-}
-
 #capybara-flying{
     position:static;
 }
@@ -95,14 +107,14 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3.9rem;
     text-align: center;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
 }
 
 #card-title-ticket{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2.8rem;
     text-align: center;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
 }
 
 #temp-p{
@@ -115,4 +127,14 @@
     position: relative;
     bottom: 40px;
     height: 150px;
+}
+
+#btn-back{
+    position: relative;
+    top: 4rem;
+}
+
+#btn-back-city{
+    position: relative;
+    right: 25rem;
 }
