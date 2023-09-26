@@ -90,6 +90,10 @@ bash src/resource/install.sh
 ```
 esto creara el entorno virtual en donde se correra el programa y ademas instalara todas las librerias nesesarias.
 
+antes de correr el programa, se tiene que colocar un archivo llamado `.env()`, adentro de este archivo tendra que estar el api key que le proporciono Openweather con el siguiente formato:
+```
+API_KEY='tu API key'
+```
 ya hecho esto, para ejecutar el programa solo basta ejecutar el siguiente comando en la terminal:
 ```
 bash src/resource/execute.sh
@@ -101,6 +105,7 @@ ya con el programa corriendo, pegaremos en el navegador la siguiente direccion:
 http://127.0.0.1:5000
 ```
 y en esa pagina podremos usar el programa. Para desactivarlo basta con oprimir `Ctrl+C` en la terminal
+
 
 ## Fuentes de consulta
 
