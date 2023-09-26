@@ -44,8 +44,9 @@ def searchcity():
 
 
 def searchticket(ticket):
-    weathers_json = read(str(ticket))
+    
     try:
+        weathers_json = read(str(ticket))
         origin = weathers_json[0]
         destiny = weathers_json[1]
     except TypeError:
