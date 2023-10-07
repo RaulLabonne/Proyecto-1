@@ -16,7 +16,7 @@ def searchcity():
     """
 
     city = request.form['location']
-    if len(city) == 16:
+    if ((len(city) == 16) & (city.count(" ")==0)):
         return searchticket(city)
     weather_city = search(city)
     data_weather = toString(weather_city)
