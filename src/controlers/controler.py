@@ -7,6 +7,14 @@ from . import resource
 
 @resource.route('/search_city', methods=['POST'])
 def searchcity():
+    """" Controller for search a city. If the length of city is 16, then city is a ticket and search the ticket.
+
+    Returns
+    -------
+    str
+        The render of result_city with all weather data of a city.
+    """
+
     city = request.form['location']
     if len(city) == 16:
         return searchticket(city)
@@ -26,11 +34,54 @@ def searchcity():
                            )
 
 
+@resource.errorhandler(404)
+def page_not_found(fail):
+    """Controller for errors that may occur during execution.
+
+    Parameters
+    ----------
+    fail : str
+        The error that happened.
+
+    Returns
+    -------
+    str
+        The render of 404.html with the error.
+    """
+
+    return render_template("404.html", errorS=fail), 404
+
+
 def searchticket(ticket):
-    weathers_json = read(str(ticket))
-    origin = weathers_json[0]
+    """ Search the ticket and get the weather datas for their cities.
+
+    Parameters
+    ----------
+    ticket : str
+        The ticket to look for.
+
+    Returns
+    -------
+    str
+        The render of result_ticket with de data weather for their cities.
+    """
+
+    try:
+        weathers_json = read(str(ticket))
+        origin = weathers_json[0]
+        destiny = weathers_json[1]
+    except TypeError:
+        return page_not_found(errorEscritura())
+    except ValueError:
+        return page_not_found(errorAPI(1))
+    except SyntaxError:
+        return page_not_found(errorLectura())
+    except UserWarning:
+        return page_not_found(errorCall())
+    except FutureWarning:
+        return page_not_found(errorAPI())
+
     origin_weather = toString(origin)
-    destiny = weathers_json[1]
     destiny_weather = toString(destiny)
     return render_template('result_ticket.html',
                            ticket_html=ticket,
@@ -58,6 +109,19 @@ def searchticket(ticket):
 
 
 def toString(json):
+    """ Gets an array with the data weather of a city.
+
+     Parameters
+     ----------
+     json : dict
+        The Json that the API gave us of a city.
+
+    Returns
+    -------
+    list
+        All data weathers of a city.
+    """
+    
     dict_weather = json['weather']
     city = json['name']
     list_weather = dict_weather[0]
@@ -74,3 +138,21 @@ def toString(json):
     clouds_dict = json['clouds']
     clouds = clouds_dict['all']
     return [city, weather_type, temp, temp_min, temp_max, sensation, humidity, pressure, speed, clouds]
+
+
+def errorEscritura():
+    return "lo la ciudad que buscas o ticket no estan en la base de datos"
+
+
+def errorLectura():
+    return "la base de datos no esta o contiene datos erroneos"
+
+
+def errorAPI(num):
+    if (num == 1):
+        return "tu API key no es valida, revisala"
+    return "la API no responde, intente mas tarde"
+
+
+def errorCall():
+    return "se han superado el limite de llamadas permitidas, por favor espere un minuto o se baneara su API"
