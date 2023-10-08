@@ -38,23 +38,7 @@ Para poder hacer las diferentes plantillas de html, se ocupo componentes del fra
 
 
 ### Resolucion de problema
-Lo primero a tratar seria como es que funcionaria la app por el lado del modelo, para esto se diseñaron los siguientes pseudocodigos:
-
-![codigo1](src/resource/images/algoritmo1.png)
-
-![codigo2](src/resource/images/algoritmo2.png)
-
-![codigo3](src/resource/images/algoritmo3.png)
-
-![codigo4](src/resource/images/algoritmo4.png)
-
-![codigo5](src/resource/images/algoritmo5.png)
-
-![codigo6](src/resource/images/algoritmo6.png)
-
-![codigo7](src/resource/images/algoritmo7.png)
-
-en estos se puede observar a detalle que es lo que hacen los algoritmos del programa, claro esta que en la documentacion del propio codigo se dan mas detalles acerca de cada uno.
+el psudocodigo y la resolucion del probelma sera exiplicado a detalle en el archivo [`ReadMe.pdf`](ReadMe.pdf)
 
 ## Codigo de otras fuentes
 en el proyecto hicimos uso de codigo externo, especificamnete tomamos la implementacion del algoritmo de Levenshtein que se encuentra dsiponible en wikipedia[^7], esto fue hecho asi porque es una version mas eficiente de la que nosotros podriamos hacer y ademas como tal solo calcula la distancia de Levenshtein de 2 strings, la implentacion de este algoritmo para que nos ayudara a buscar coincidencias fue totalmente original.
@@ -63,6 +47,12 @@ el codigo en cuestion es la funcion [`levenstein()`](src/models/levenstein.py)
 ## Como instalar y correr el programa
 >:warning:
 > se estas instruciones estan garantizadas que funcionan para Python 3.8 en adelante, ademas presupone que tienes pip instalado(cualquier version de Python igual o superior a la 3.8 lo tiene preinstalado) si no se tiene pip instalado se debera instalar en su equipo
+
+>:warning:
+>antes de correr el programa, se tiene que colocar un archivo adentro de la carpeta `/Proyecto-1` llamado `.env`, adentro de este archivo tendra que estar el api key que le proporciono Openweather con el siguiente formato:
+```
+API_KEY='tu API key'
+```
 
 lo primero que se tiene que hacer es clonar el repositorio, para esto pegaremos el siguiente comando en la terminal:
 ```
@@ -90,10 +80,6 @@ bash src/resource/install.sh
 ```
 esto creara el entorno virtual en donde se correra el programa y ademas instalara todas las librerias nesesarias.
 
-antes de correr el programa, se tiene que colocar un archivo llamado `.env()`, adentro de este archivo tendra que estar el api key que le proporciono Openweather con el siguiente formato:
-```
-API_KEY='tu API key'
-```
 ya hecho esto, para ejecutar el programa solo basta ejecutar el siguiente comando en la terminal:
 ```
 bash src/resource/execute.sh
