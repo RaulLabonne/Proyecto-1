@@ -18,8 +18,20 @@ def searchcity():
     city = request.form['location']
     if ((len(city) == 16) & (city.count(" ")==0)):
         return searchticket(city)
-    weather_city = search(city)
-    data_weather = toString(weather_city)
+    try:
+        weather_city = search(city)
+        data_weather = toString(weather_city)
+    except TypeError:
+        return page_not_found(errorEscritura())
+    except ValueError:
+        return page_not_found(errorAPI(1))
+    except SyntaxError:
+        return page_not_found(errorLectura())
+    except UserWarning:
+        return page_not_found(errorCall())
+    except FutureWarning:
+        return page_not_found(errorAPI())
+    
     return render_template('result_city.html',
                            city=data_weather[0],
                            weather_type=data_weather[1],
@@ -118,7 +130,7 @@ def toString(json):
 
     Returns
     -------
-    list
+    List
         All data weathers of a city.
     """
     

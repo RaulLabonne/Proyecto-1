@@ -3,12 +3,21 @@ from unicodedata import normalize
 from src.database.readDB import dataCity
 
 def levenstein(str1, str2):
+    """Calculate the Levenshtein distance between two strings.
+    
+    Parameters
+    ----------
+    str1 : str
+        the first string
+    str2 : str
+        the second string
+        
+    Returns
+    -------
+    int
+        the Levenshtein distance between the two strings
     """
-    Calculate the Levenshtein distance between two strings.
-    @param str1: the first string
-    @param str2: the second string
-    @return: the Levenshtein distance between the two strings
-    """
+    
     d=dict()
     for i in range(len(str1)+1):
         d[i]=dict()
@@ -21,11 +30,21 @@ def levenstein(str1, str2):
     return d[len(str1)][len(str2)]
 
 def searchLev(code):
+    
+    """Search for a given code in the dataCity dataset using the Levenshtein distance algorithm. 
+
+    
+     Parameters
+    ----------
+    code : str 
+        the string to search
+        
+    Returns
+    -------
+    DataFrame
+        the row in the dataset that match the code, or a empty row if no match is found
     """
-    Search for a given code in the dataCity dataset using the Levenshtein distance algorithm. 
-    @param code: the string to search
-    @return: the row in the dataset that match the code, or a empty rowf no match is found
-    """
+    
     data = dataCity() 
     line = data[data['IATA']=='zzzz'] # line is a empty row 
     lowest = 99
@@ -37,16 +56,23 @@ def searchLev(code):
         if(distance < lowest):
             lowest = distance
             row = i
-    if(lowest==len(code)):
-        
+    if(lowest>=len(code)/2):
         return line
     
     return data.iloc[[row]]
 
 def norm(code):
-    """
-    Normalize the given code by applying the NFKD normalization form and converting it to lowercase.
-    @param code: the code to be normalized
-    @return: the normalized code
+    """Normalize the given code by applying the NFKD normalization form and converting it to lowercase.
+
+
+     Parameters
+    ----------
+    code : str
+        the code to be normalized
+        
+    Returns
+    -------
+    str
+        the normalized code
     """
     return normalize('NFKD',code).lower()

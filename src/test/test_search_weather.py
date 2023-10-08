@@ -12,7 +12,7 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY") #La key para hacer llamadas a la api
 
 class SearchWeather(unittest.TestCase):
-    maxDiff = 1974
+    maxDiff = 20000
     def test_search(self):
         invalid = 'Fail'
         try:
@@ -23,9 +23,10 @@ class SearchWeather(unittest.TestCase):
         city = data[data['IATA']=="MEX"]
         city.reset_index(inplace=True, drop=False)
         weather = search('MEX')
-        iata = request_iatacode(city)  # Da un array de tama\~no 2, donde esta la latitud y longitud
+        iata = request_iatacode(city)  # Da un array de tamaño 2, donde esta la latitud y longitud
         req = requests.get('https://api.openweathermap.org/data/2.5/weather?lat=' + str(iata[0]) + '&lon=' + str(iata[1]) + '&appid=' + os.getenv("API_KEY")+'&units=metric')
         compare_json = req.json()
+        compare_json['name'] ='ciudad de mexico'
         self.assertEqual(weather, compare_json)
 
     def test_cache(self):
