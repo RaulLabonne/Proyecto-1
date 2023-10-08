@@ -86,45 +86,50 @@ h1{
     position: absolute;
     top:70px;
     left:900px;
-    animation-duration: 27s;
+    animation-duration: 29s;
     animation-name: slide;
     animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .image-background .cloud2{
     position: absolute;
     top:200px;
     left:250px;
-    animation-duration: 22s;
+    animation-duration: 16s;
     animation-name: slide;
     animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .image-background .cloud3{
     position: absolute;
     top:40px;
     left:0px;
-    animation-duration: 15s;
+    animation-duration: 22s;
     animation-name: slide;
     animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .image-background .cloud4{
     position: absolute;
     top:0px;
     left:60px;
-    animation-duration: 15s;
+    animation-duration: 14s;
     animation-name: slide;
     animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .image-background .cloud5{
     position: absolute;
     top:7px;
     left:5px;
-    animation-duration: 26s;
+    animation-duration: 19s;
     animation-name: slide;
     animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .image-background .cloud6{
@@ -134,6 +139,7 @@ h1{
     animation-duration: 26s;
     animation-name: slideleft;
     animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .image-background .grass{
@@ -161,27 +167,13 @@ h1{
 
 /* Animation */
 @keyframes slide {
-    from {
-      margin-left: 0%;
-      width: 100%;
-    }
-  
-    to {
-      margin-left: 100%;
-      width: 300%;
-    }
+    from {left:0;}
+    to {left:86%;}
 }
 
 @keyframes slideleft {
-    from {
-      margin-left: 0%;
-      width: 300%;
-    }
-  
-    to {
-      margin-left: -100%;
-      width: 0%;
-    }
+    from {left:0;}
+    to {left:86%;}
 }
 
 @keyframes rotation {
