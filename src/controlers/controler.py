@@ -1,6 +1,7 @@
 from flask import render_template, request
 from src.models.readcvs import read
 from src.models.search_weather import search
+from src.controlers.error import *
 
 from . import resource
 
@@ -22,15 +23,15 @@ def searchcity():
         weather_city = search(city)
         data_weather = toString(weather_city)
     except TypeError:
-        return page_not_found(errorEscritura())
+        return page_not_found(writeError())
     except ValueError:
-        return page_not_found(errorAPI(1))
+        return page_not_found(apiError(1))
     except SyntaxError:
-        return page_not_found(errorLectura())
+        return page_not_found(readError())
     except UserWarning:
         return page_not_found(errorCall())
     except FutureWarning:
-        return page_not_found(errorAPI())
+        return page_not_found(apiError())
     
     return render_template('result_city.html',
                            city=data_weather[0],
@@ -83,15 +84,15 @@ def searchticket(ticket):
         origin = weathers_json[0]
         destiny = weathers_json[1]
     except TypeError:
-        return page_not_found(errorEscritura())
+        return page_not_found(writeError())
     except ValueError:
-        return page_not_found(errorAPI(1))
+        return page_not_found(apiError(1))
     except SyntaxError:
-        return page_not_found(errorLectura())
+        return page_not_found(readError())
     except UserWarning:
         return page_not_found(errorCall())
     except FutureWarning:
-        return page_not_found(errorAPI())
+        return page_not_found(apiError())
 
     origin_weather = toString(origin)
     destiny_weather = toString(destiny)
@@ -150,59 +151,3 @@ def toString(json):
     clouds_dict = json['clouds']
     clouds = clouds_dict['all']
     return [city, weather_type, temp, temp_min, temp_max, sensation, humidity, pressure, speed, clouds]
-
-
-def errorEscritura():
-    """ Gives a message for a write error.
-
-    Returns
-    -------
-    str
-        The message that will show in 404.html.
-    """
-
-    return "lo la ciudad que buscas o ticket no estan en la base de datos"
-
-
-def errorLectura():
-    """ Gives a message for a read error.
-
-    Returns
-    -------
-    str
-        The message that will show in 404.html.
-    """
-
-    return "la base de datos no esta o contiene datos erroneos"
-
-
-def errorAPI(num):
-    """ Gives a message for an API error.
-
-    If the number is 1, then the apy key is wrong write, in other case the error is of the server.
-
-    Parameters
-    ----------
-    num : int, optional
-        Type of error that happened
-
-    Returns
-    -------
-    str
-        The message that will show in 404.html
-    """
-
-    if (num == 1):
-        return "tu API key no es valida, revisala"
-    return "la API no responde, intente mas tarde"
-
-
-def errorCall():
-    """ Gives a message for a call error, this only occurs if the limit of API calls is exceeded
-
-    Returns
-    -------
-    str
-        The message that will show in 404.html.
-    """
-    return "se han superado el limite de llamadas permitidas, por favor espere un minuto o se baneara su API"
