@@ -2,7 +2,7 @@ from flask import Flask
 
 
 def create_app():
-    """ Create an app and register de the blueprints.
+    """ Create an app and register the blueprints.
 
     The blueprints are controllers and routes.
 
