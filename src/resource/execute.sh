@@ -1,3 +1,3 @@
 #!/bin/bash
 source venv/bin/activate 
-python -m flask run 
+python3 -m flask run 
